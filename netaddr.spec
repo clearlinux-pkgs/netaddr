@@ -4,7 +4,7 @@
 #
 Name     : netaddr
 Version  : 0.7.18
-Release  : 20
+Release  : 21
 URL      : https://github.com/drkjam/netaddr/archive/netaddr-0.7.18.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/netaddr-0.7.18.tar.gz
 Summary  : No detailed summary available
