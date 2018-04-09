@@ -4,14 +4,13 @@
 #
 Name     : netaddr
 Version  : 0.7.19
-Release  : 36
+Release  : 37
 URL      : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: netaddr-bin
-Requires: netaddr-legacypython
 Requires: netaddr-python3
 Requires: netaddr-python
 Requires: pytest
@@ -38,19 +37,9 @@ Group: Binaries
 bin components for the netaddr package.
 
 
-%package legacypython
-Summary: legacypython components for the netaddr package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the netaddr package.
-
-
 %package python
 Summary: python components for the netaddr package.
 Group: Default
-Requires: netaddr-legacypython
 Requires: netaddr-python3
 
 %description python
@@ -75,15 +64,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507160470
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523292439
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1507160470
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -94,10 +80,6 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/netaddr
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
