@@ -4,7 +4,7 @@
 #
 Name     : netaddr
 Version  : 0.7.19
-Release  : 39
+Release  : 40
 URL      : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
 Summary  : No detailed summary available
@@ -13,7 +13,6 @@ License  : BSD-3-Clause
 Requires: netaddr-bin
 Requires: netaddr-python3
 Requires: netaddr-python
-Requires: pytest
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
@@ -64,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523292439
+export SOURCE_DATE_EPOCH=1528560349
 python3 setup.py build -b py3
 
 %install
