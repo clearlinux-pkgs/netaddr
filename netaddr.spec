@@ -4,20 +4,17 @@
 #
 Name     : netaddr
 Version  : 0.7.19
-Release  : 52
+Release  : 53
 URL      : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/netaddr-0.7.19.tar.gz
-Summary  : No detailed summary available
+Summary  : A network address manipulation library for Python
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: netaddr-bin
-Requires: netaddr-python3
-Requires: netaddr-python
-BuildRequires : pbr
-BuildRequires : pip
-
-BuildRequires : python3-dev
-BuildRequires : setuptools
+Requires: netaddr-bin = %{version}-%{release}
+Requires: netaddr-license = %{version}-%{release}
+Requires: netaddr-python = %{version}-%{release}
+Requires: netaddr-python3 = %{version}-%{release}
+BuildRequires : buildreq-distutils3
 Patch1: 0001-Add-missing-PKG-INFO.patch
 
 %description
@@ -31,15 +28,24 @@ A network address manipulation library for Python
 %package bin
 Summary: bin components for the netaddr package.
 Group: Binaries
+Requires: netaddr-license = %{version}-%{release}
 
 %description bin
 bin components for the netaddr package.
 
 
+%package license
+Summary: license components for the netaddr package.
+Group: Default
+
+%description license
+license components for the netaddr package.
+
+
 %package python
 Summary: python components for the netaddr package.
 Group: Default
-Requires: netaddr-python3
+Requires: netaddr-python3 = %{version}-%{release}
 
 %description python
 python components for the netaddr package.
@@ -49,6 +55,7 @@ python components for the netaddr package.
 Summary: python3 components for the netaddr package.
 Group: Default
 Requires: python3-core
+Provides: pypi(netaddr)
 
 %description python3
 python3 components for the netaddr package.
@@ -56,19 +63,30 @@ python3 components for the netaddr package.
 
 %prep
 %setup -q -n netaddr-netaddr-0.7.19
+cd %{_builddir}/netaddr-netaddr-0.7.19
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1528560349
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583186024
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/netaddr
+cp %{_builddir}/netaddr-netaddr-0.7.19/LICENSE %{buildroot}/usr/share/package-licenses/netaddr/9845407cb462ca4d036606420b3f047a235f3035
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -79,6 +97,10 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/netaddr
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/netaddr/9845407cb462ca4d036606420b3f047a235f3035
 
 %files python
 %defattr(-,root,root,-)
