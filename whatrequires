@@ -1,18 +1,1 @@
 # This file contains recursive sources that require this package
-WSME
-heat
-horizon
-neutron
-neutron-lib
-nova
-os-ken
-os_vif
-oslo.config
-oslo.utils
-oslo.versionedobjects
-oslo.vmware
-osprofiler
-ovsdbapp
-python-neutronclient
-tempest
-zVMCloudConnector
