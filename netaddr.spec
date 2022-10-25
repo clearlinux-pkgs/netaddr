@@ -4,7 +4,7 @@
 #
 Name     : netaddr
 Version  : 0.8.0
-Release  : 67
+Release  : 68
 URL      : https://github.com/drkjam/netaddr/archive/0.8.0/netaddr-0.8.0.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/0.8.0/netaddr-0.8.0.tar.gz
 Summary  : A network address manipulation library for Python
