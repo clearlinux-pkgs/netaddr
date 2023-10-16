@@ -5,7 +5,7 @@
 #
 Name     : netaddr
 Version  : 0.9.0
-Release  : 69
+Release  : 70
 URL      : https://github.com/drkjam/netaddr/archive/0.9.0/netaddr-0.9.0.tar.gz
 Source0  : https://github.com/drkjam/netaddr/archive/0.9.0/netaddr-0.9.0.tar.gz
 Summary  : A network address manipulation library for Python
