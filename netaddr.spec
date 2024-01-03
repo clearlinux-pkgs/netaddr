@@ -6,10 +6,10 @@
 # autospec commit: c1050fe
 #
 Name     : netaddr
-Version  : 0.10.0
-Release  : 72
-URL      : https://github.com/drkjam/netaddr/archive/0.10.0/netaddr-0.10.0.tar.gz
-Source0  : https://github.com/drkjam/netaddr/archive/0.10.0/netaddr-0.10.0.tar.gz
+Version  : 0.10.1
+Release  : 73
+URL      : https://github.com/drkjam/netaddr/archive/0.10.1/netaddr-0.10.1.tar.gz
+Source0  : https://github.com/drkjam/netaddr/archive/0.10.1/netaddr-0.10.1.tar.gz
 Summary  : A network address manipulation library for Python
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -72,11 +72,11 @@ python3 components for the netaddr package.
 
 
 %prep
-%setup -q -n netaddr-0.10.0
-cd %{_builddir}/netaddr-0.10.0
+%setup -q -n netaddr-0.10.1
+cd %{_builddir}/netaddr-0.10.1
 %patch -P 1 -p1
 pushd ..
-cp -a netaddr-0.10.0 buildavx2
+cp -a netaddr-0.10.1 buildavx2
 popd
 
 %build
@@ -84,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1704139430
+export SOURCE_DATE_EPOCH=1704295242
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
